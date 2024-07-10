@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>메인 페이지</h1>
+        <p>위, 위, 아래, 아래 키를 순서대로 누르면 새 창에서 숨겨진 페이지가 열립니다.</p>
+    </div>
+
+    <script>
+        let keys = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown'];
+
+        document.addEventListener('keydown', (event) => {
+            keys.push(event.key);
+            
+            if (keys.length > konamiCode.length) {
+                keys.shift();
+            }
+            
+            if (keys.join(',') === konamiCode.join(',')) {
+                window.open('hidden.html', '_blank', 'width=400,height=300');
+                keys = [];
+            }
+        });
+    </script>
+</body>
+</html>
